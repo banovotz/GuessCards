@@ -1,3 +1,5 @@
-from config import config
-from draw import draw
+#from draw import draw
+
+
+
 
