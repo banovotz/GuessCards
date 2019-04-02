@@ -1,13 +1,14 @@
 from config import config
 import re
-
+import pickledb
+dimensions_db=pickledb.load('dimenzije.db', False)
 class SumOfAllNumbers:
     def sumOfAllNumbers(self, cards):
         cards_list=[]
         cards_numbers = []
         for key,value in cards.iteritems():
             cards_list.append(value)
-        print cards_list
+        #print cards_list
         for card in cards_list:
             if re.findall('\d+', str(card)):
                 cards_numbers.append(int(re.findall('\d+', str(card))[0]))
@@ -27,7 +28,11 @@ class SumOfAllNumbers:
         sum_of_all_cards=sum(card_numbers_normalized_tens)
 
        #print(sum_of_all_cards)
-        config.DIMENSIONS_LIST.update({"sum_of_all_cards": sum_of_all_cards})
-        print config.DIMENSIONS_LIST
+        dimensions_db.set('sum_of_all_cards', sum_of_all_cards)
+        dimensions_db.dcreate("perica")
+        dimensions_db.dadd("perica", ("sum_of_all_cards", sum_of_all_cards))
+        dimensions_db.dgetall('sum_of_all_cards')
+        dimensions_db.dump()
         return sum_of_all_cards
+
 

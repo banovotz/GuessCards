@@ -1,17 +1,21 @@
 import requests
 import json
 
-url = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+class Shuffle:
+    def shuffleCards(self):
+        url = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 
-headers = {
-    'Cache-Control': "no-cache",
+        headers = {
+            'Cache-Control': "no-cache",
 
-    }
+            }
 
-response = requests.request("GET", url, headers=headers)
+        response = requests.request("GET", url, headers=headers)
 
-deck = json.loads(response.text)
+        deck = json.loads(response.text)
 
 
-DECK_ID = deck["deck_id"]
+        DECK_ID =  deck["deck_id"]
+        return DECK_ID
 
+#"5xdqigk03g9f"
