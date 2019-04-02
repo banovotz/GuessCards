@@ -10,7 +10,7 @@ SAN = sum_of_all_numbers.SumOfAllNumbers()
 dimensions2_db=pickledb.load('dimenzije2.db', False)
 
 i=0
-while i < 50:
+while i < 2:
 
     drawn_cards = DC.drawCards(SH.shuffleCards(), config.CARDS_TO_DRAW)
     sum_of_drawn_cards_with_numbers = SAN.sumOfAllNumbers(drawn_cards)
