@@ -1,1 +1,2 @@
 CARDS_TO_DRAW=5
+CARDS_AND_DIMENSIONS_PICKLE_DB='cards_and_dimensions.db'
