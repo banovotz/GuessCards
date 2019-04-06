@@ -1,7 +1,7 @@
 from config import config
 import re
 import pickledb
-dimensions_db=pickledb.load('dimenzije.db', False)
+
 class SumOfAllNumbers:
     def sumOfAllNumbers(self, cards):
         cards_list=[]
@@ -19,7 +19,7 @@ class SumOfAllNumbers:
             else:
                 card_number = card_number
             card_numbers_normalized_tens.append(card_number)
-        sum_of_all_cards=sum(card_numbers_normalized_tens)
+        sum_of_all_cards=str(sum(card_numbers_normalized_tens))
 
         return sum_of_all_cards
 

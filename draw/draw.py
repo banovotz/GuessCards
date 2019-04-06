@@ -25,5 +25,5 @@ class DrawCards:
         while i < cards_to_draw:
             drawn.update({word.number_to_words(i+1): drawn_json["cards"][i]["code"]})
             i=i+1
-        print drawn
+        #print drawn
         return drawn
