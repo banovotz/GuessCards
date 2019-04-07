@@ -1,5 +1,6 @@
 ### Credits
-The idea for this project is loosely based on software testing card games introduced by  Rapid Software Testing authors James Bach<sup>[1]</sup> and James Bolton<sup>[2]</sup>.
+The idea for this project is loosely based on software testing card games introduced by  Rapid Software Testing authors James Bach<sup>[1]</sup> and Michael Bolton<sup>[2]</sup>.
+
 This project would be much harder to achieve without deckofcardsapi.com and Python.     
 
 ### The game
