@@ -1,7 +1,7 @@
-###Credits
+### Credits
 This project is loosely based on software testing card games introduced by  Rapid Software Testing authors James Bach<sup>[1]</sup> and James Bolton<sup>[2]</sup>.
 
-###The game
+### The game
 The version of the game I was playing with my team and on the testing conferences, has the following simple rules:
 
 The  master (one who deals ATM) deals 5 cards for everybody to see and says whether the hand on the table is true or false. The game master continues to draw 5 cards and states with every hand if it is true or false. That statement is based on some sort of rule that is known only to the game master. 
@@ -12,7 +12,7 @@ Basicaly, there are _dimensions_ that should be representable in a number - eg: 
 
 A player who guesses the rule (think of it as the unknown unknown of the cynefin framework<sup>[3]</sup>) is a winner and contender for the next game master in the game.
 
-###Project goals
+### Project goals
 
 This project has two goals - one is to generate lists with hands of actual playing cards (represented with their simbols, eg 3D is three of diamnond and KH is King of hearths). Second is to use machine learning to "guess" the rule. 
 The question is would that be possible without revealing the dimension. 
