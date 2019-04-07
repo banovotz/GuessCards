@@ -10,7 +10,7 @@ The game master (one who deals ATM) deals 5 cards for everybody to see and says 
 
 Basicaly, there are _dimensions_ that should be representable in a number - eg: sum of numbered cards, number of face cards, number of cards with female characters, number of cards where a character holds a sword etc, and _rules_ which is result of some mathematical operation within dimension in the current hand. For example, a rule can be that 2 kings are true (=), or at least 3 face cards are true (=>), the sum of cards wiht numnbers is less than 20 (<) etc. 
 
-A player who guesses the rule (think of it as the unknown unknown of the cynefin framework<sup>[3]</sup>) is a winner and contender for the next game master in the game.
+A player who guesses the rule (think of it as the unknown unknown of the cynefin framework<sup>[3]</sup>) is the winner of the round and contender for the next game master in the game.
 
 ### Project goals
 
