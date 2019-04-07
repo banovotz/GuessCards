@@ -5,9 +5,7 @@ This project would be much harder to achieve without deckofcardsapi.com and Pyth
 ### The game
 The version of the game I was playing with my team and on the testing conferences, has the following simple rules:
 
-The  master (one who deals ATM) deals 5 cards for everybody to see and says whether the hand on the table is true or false. The game master continues to draw 5 cards and states with every hand if it is true or false. That statement is based on some sort of rule that is known only to the game master. 
-
-Eg: true is if the sum of all the numbered cards is more than 14, or if there are at least 3 red cards in the hand, or if there are at least two hearts. 
+The  master (one who deals ATM) deals 5 cards for everybody to see and says whether the hand on the table is true or false. The game master continues to draw 5 cards and states with every hand if it is true or false. That statement is based on some sort of rule that is known only to the game master. Eg: true is if the sum of all the numbered cards is more than 14, or if there are at least 3 red cards in the hand, or if there are at least two hearts. 
 
 Basicaly, there are _dimensions_ that should be representable in a number - eg: sum of numbered cards, number of face cards, number of cards with female characters, number of cards where a character holds a sword etc, and _rules_ which is result of some mathematical operation within dimension in the current hand. For example, a rule can be that 2 kings are true (=), or at least 3 face cards are true (=>), the sum of cards wiht numnbers is less than 20 (<) etc. 
 
