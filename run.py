@@ -24,6 +24,7 @@ class Run:
         i=0
 
         while i < list_len:
+
             drawn_cards = DC.drawCards(SH.shuffleCards(), config.CARDS_TO_DRAW)
             dimension_name = switch_dimensions(drawn_cards)[dimension][1]
             dimension_value = switch_dimensions(drawn_cards)[dimension][0]
