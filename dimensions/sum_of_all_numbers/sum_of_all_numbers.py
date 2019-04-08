@@ -1,9 +1,10 @@
-from config import config
 import re
-import pickledb
+import os
 
 class SumOfAllNumbers:
+
     def sumOfAllNumbers(self, cards):
+        dimension_name=os.path.basename(__file__).split(".")[0]
         cards_list=[]
         cards_numbers = []
         for key,value in cards.iteritems():
@@ -21,6 +22,6 @@ class SumOfAllNumbers:
             card_numbers_normalized_tens.append(card_number)
         sum_of_all_cards=str(sum(card_numbers_normalized_tens))
 
-        return sum_of_all_cards
+        return [sum_of_all_cards, dimension_name]
 
 
