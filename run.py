@@ -2,12 +2,14 @@ from config import config
 from shuffle import shuffle
 from draw import draw
 from to_db import to_db
+from to_csv import to_csv
 from dimensions.sum_of_all_numbers import sum_of_all_numbers
 
 SH = shuffle.Shuffle()
 DC = draw.DrawCards()
 SAN = sum_of_all_numbers.SumOfAllNumbers()
 TD=to_db.ToDb()
+TC=to_csv.ToCsv()
 
 
 def switch_dimensions(drawn_cards):
@@ -39,6 +41,11 @@ class Run:
 
             TD.to_db(dimension_name, dimension_value, drawn_cards, rule_bool, i)
             i=i+1
+class RunCsv:
+    def generate_csv(self):
+        TC.write_csv()
 
 R=Run()
-R.generate_list("sum_of_all_cards_with_numbers", 3, ["gt", 15])
+R.generate_list("sum_of_all_cards_with_numbers", 100, ["gt", 15])
+RC=RunCsv()
+RC.generate_csv()
