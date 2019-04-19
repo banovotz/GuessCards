@@ -12,7 +12,6 @@ SH = shuffle.Shuffle()
 DC = draw.DrawCards()
 SAN = sum_of_all_numbers.SumOfAllNumbers()
 TD=to_db.ToDb()
-TC=to_csv.ToCsv()
 P=predict.Predict()
 IP=is_prime.IsPrime()
 TH=to_html.ToHtml()
@@ -60,15 +59,16 @@ class Run:
             i=i+1
 class RunCsv:
     def generate_csv(self):
+        TC = to_csv.ToCsv()
         TC.write_csv()
 
-R=Run()
-#R.generate_list("sum_of_all_cards_with_numbers", 100, ["gt", 15])
-R.generate_list("sum_of_all_cards_with_numbers", 100, ["prime", True])
-
-RC=RunCsv()
-RC.generate_csv()
-
-P.predict_bool()
+# R=Run()
+# #R.generate_list("sum_of_all_cards_with_numbers", 100, ["gt", 15])
+# R.generate_list("sum_of_all_cards_with_numbers", 100, ["prime", True])
+#
+# RC=RunCsv()
+# RC.generate_csv()
+#
+# P.predict_bool()
 
 TH.to_html()

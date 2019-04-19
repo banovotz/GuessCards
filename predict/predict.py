@@ -30,6 +30,6 @@ class Predict():
                 b = "true"
             else:
                 b = "false"
-            print "zbroj karata je " + a + ",a zakljucak je " + b
+            print("zbroj karata je " + a + ",a zakljucak je " + b)
 
 

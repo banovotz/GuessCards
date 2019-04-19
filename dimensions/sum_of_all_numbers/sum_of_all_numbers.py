@@ -7,7 +7,7 @@ class SumOfAllNumbers:
         dimension_name=os.path.basename(__file__).split(".")[0]
         cards_list=[]
         cards_numbers = []
-        for key,value in cards.iteritems():
+        for key,value in cards.items():
             cards_list.append(value)
         for card in cards_list:
             if re.findall('\d+', str(card)):

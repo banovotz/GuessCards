@@ -1,9 +1,16 @@
 from config import config
-from html import HTML
-import csv
+from helpers.html_3rd import html3rd
 
-H=HTML()
+H=html3rd.HTML()
+
+import csv
+from word2number import w2n
+
+
+#H=HTML()
+
 class ToHtml:
+
     def to_html(self):
         t=H.table(border='2')
         r = t.tr
@@ -13,8 +20,14 @@ class ToHtml:
                 r.td(column)
             for row in reader:
                 t.tr
-                for col in row.iteritems():
-                    t.td(col[1])
-        print t
+                for col in row.items():
+
+                    try:
+                        w2n.word_to_num(col[0])
+
+                        t.td("<img width='60' src='https://deckofcardsapi.com/static/img/" + col[1] + ".png'></img>", escape=False)
+                    except:
+                        t.td(col[1])
+        print(t)
 
 
