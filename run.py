@@ -1,3 +1,6 @@
+from gooey import Gooey, GooeyParser
+import webview
+import threading
 from config import config
 from shuffle import shuffle
 from draw import draw
@@ -15,6 +18,7 @@ TD=to_db.ToDb()
 P=predict.Predict()
 IP=is_prime.IsPrime()
 TH=to_html.ToHtml()
+
 def switch_dimensions(drawn_cards):
     dimensions_switch = {"sum_of_all_cards_with_numbers": SAN.sumOfAllNumbers(drawn_cards)}
     return dimensions_switch
@@ -28,14 +32,15 @@ class Run:
 
         i=0
 
-        while i < list_len:
+
+        while i < int(list_len):
 
             drawn_cards = DC.drawCards(SH.shuffleCards(), config.CARDS_TO_DRAW)
             dimension_name = switch_dimensions(drawn_cards)[dimension][1]
             dimension_value = switch_dimensions(drawn_cards)[dimension][0]
 
             if rule[0] == "gt":
-                rule_name="greater than " + rule[1]
+                rule_name="greater than " + str(rule[1])
                 if int(dimension_value) > int(rule[1]):
                     rule_bool="true"
                 else:
@@ -57,18 +62,66 @@ class Run:
 
             TD.to_db(dimension_name, dimension_value, drawn_cards, rule_bool, rule_name, i)
             i=i+1
+
+
+
+
 class RunCsv:
     def generate_csv(self):
         TC = to_csv.ToCsv()
         TC.write_csv()
+program_description='Generate hands of cards'
+@Gooey(
+       navigation='TABBED',
+       default_size=(800, 600),
+       image_dir='res',
+       program_name='Guess The Game',
+       program_description=program_description,
+       show_success_modal=False,
+       header_show_subtitle=False)
+def main():
 
-# R=Run()
-# #R.generate_list("sum_of_all_cards_with_numbers", 100, ["gt", 15])
-# R.generate_list("sum_of_all_cards_with_numbers", 100, ["prime", True])
-#
-# RC=RunCsv()
-# RC.generate_csv()
-#
-# P.predict_bool()
+    parser = GooeyParser()
 
-TH.to_html()
+    subparser = parser.add_subparsers()
+    dimensions_parser=subparser.add_parser('dimensions')
+
+    dimensions_parser.add_argument('--dimension', dest='dimension_value', help='dimension to run', required=True)
+    dimensions_parser.add_argument('--list_len', dest='list_len_value', help='list length', required=True)
+    dimensions_parser.add_argument('--rule_name', dest='rule_name_value', help='rule name', required=True)
+    dimensions_parser.add_argument('--param', dest='rule_param_value', help='rule param', required=True)
+
+
+    preview_parser = subparser.add_parser('play')
+    preview_parser.add_argument('--do_preview', widget='Dropdown', dest='do_preview_value', choices=["play as human", "let ML guess"])
+
+
+    results=parser.parse_args()
+
+    try:
+        if results.do_preview_value  == "play as human":
+            def display_html():
+                html_to_display=TH.to_html()
+                webview.load_html(html_to_display)
+
+
+            t = threading.Thread(target=display_html)
+            t.start()
+            webview.create_window('Preview hands of drawn cards ')
+
+
+    except:
+        R = Run()
+        print("Generating list of " + str(results.list_len_value) + " hands with " + str(config.CARDS_TO_DRAW) + " cards")
+        R.generate_list(results.dimension_value, results.list_len_value, [results.rule_name_value, results.rule_param_value])
+
+
+
+#
+#P.predict_bool()
+
+#RC = RunCsv()
+#RC.generate_csv()
+
+#from gui import gui
+main()
