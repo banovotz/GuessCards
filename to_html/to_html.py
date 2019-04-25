@@ -25,7 +25,7 @@ class ToHtml:
                     try:
                         w2n.word_to_num(col[0])
 
-                        t.td("<img width='100' src='https://deckofcardsapi.com/static/img/"
+                        t.td("<img width='110' src='https://deckofcardsapi.com/static/img/"
                              + col[1]
                              + ".png'></img>",
                              escape=False,
@@ -73,7 +73,7 @@ class ToHtml:
         function toggleTable() {
             var i;
             var rows_count= document.getElementById("carddata").rows.length;
-            i = Math.floor(Math.random() * rows_count) + 2;
+            i = Math.floor(Math.random() * rows_count-2) + 2;
             j=i.toString();
             document.getElementById('button_play').innerHTML = document.getElementById(j).innerHTML + " <button type=\\"Button\\" id=\\"play\\" name=\\"Play\\" onclick=\\"toggleTable()\\">Draw</button>";
 
