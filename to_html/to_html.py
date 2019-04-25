@@ -40,6 +40,7 @@ class ToHtml:
         <body onload="init()">
         <style>
         #carddata {display: none;}
+        #button_play {color: transparent;}
         </style>
     
         
