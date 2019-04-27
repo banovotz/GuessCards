@@ -47,7 +47,7 @@ class ToHtml:
         .rule_bool {text-transform: uppercase;
                     color: ffffff;}
         body {background-color: 496D89;}
-        #play, #reveal {background-color: #123652; /* Green */
+        #play, #reveal {background-color: #123652; 
                 border: none;
                 color: white;
                 padding: 45px 85px;
@@ -55,6 +55,7 @@ class ToHtml:
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;}
+        
 
         </style>
     
@@ -73,14 +74,15 @@ class ToHtml:
         <button type="Button" id="reveal" name="Reveal" onclick="revealRule()">Reveal rule</button>
         
         </table>
+    
+
         <script>
         function toggleTable() {
             var i;
             var rows_count= document.getElementById("carddata").rows.length;
             i = Math.floor(Math.random() * rows_count-2) + 2;
             j=i.toString();
-            document.getElementById('button_play').innerHTML = document.getElementById(j).innerHTML; //+ " <button type=\\"Button\\" id=\\"play\\" name=\\"Play\\" onclick=\\"toggleTable()\\">Draw</button>";
-
+            document.getElementById('button_play').innerHTML = document.getElementById(j).innerHTML; 
         }
         
         </script>
