@@ -1,18 +1,14 @@
 from config import config
 from helpers.html_3rd import html3rd
-
-H=html3rd.HTML()
-
 import csv
 from word2number import w2n
 
 
-#H=HTML()
-
 class ToHtml:
+    H = html3rd.HTML()
 
     def to_html(self):
-        t=H.table(border='1', id="carddata")
+        t=self.H.table(border='1', id="carddata")
         r = t.tr
         with open(config.CARDS_AND_DIMENSIONS_CSV) as csvfile:
             reader = csv.DictReader(csvfile)
@@ -36,9 +32,12 @@ class ToHtml:
 
         html_app_before="""
         <html>
+        
         <head>
         </head>
+        
         <body onload="init()">
+        
         <style>
         #carddata {display: none;}
         .dimension_name {color: transparent;}
@@ -55,11 +54,8 @@ class ToHtml:
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;}
-        
-
         </style>
-    
-        
+   
         <script>
         function init() {
         pywebview.api.init()
@@ -71,11 +67,9 @@ class ToHtml:
         html_app_after="""
         <table id="button_play"> 
         <button type="Button" id="play" name="Play" onclick="toggleTable()">Draw</button>
-        <button type="Button" id="reveal" name="Reveal" onclick="revealRule()">Reveal rule</button>
-        
+        <button type="Button" id="reveal" name="Reveal" onclick="revealRule()">Reveal rule</button>    
         </table>
     
-
         <script>
         function toggleTable() {
             var i;
@@ -84,21 +78,16 @@ class ToHtml:
             j=i.toString();
             document.getElementById('button_play').innerHTML = document.getElementById(j).innerHTML; 
         }
-        
         </script>
+        
         <script>
         function revealRule() {
             var item_count = document.getElementsByClassName('rule_name').length;
-
             document.getElementsByClassName('dimension_name')[item_count-1].style.color = "ffffff";
-             document.getElementsByClassName('dimension_value')[item_count-1].style.color = "ffffff";
-            document.getElementsByClassName('rule_name')[item_count-1].style.color = "ffffff";
-            
-            
-        }
-        
-        </script>
-               
+            document.getElementsByClassName('dimension_value')[item_count-1].style.color = "ffffff";
+            document.getElementsByClassName('rule_name')[item_count-1].style.color = "ffffff";   
+        }  
+        </script>         
         
         </body>
         </html>

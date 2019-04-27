@@ -118,11 +118,7 @@ def main():
         RC.generate_csv()
 
 
-#
+
 #P.predict_bool()
 
-RC = RunCsv()
-RC.generate_csv()
-
-#from gui import gui
 main()
