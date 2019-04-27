@@ -8,8 +8,8 @@ class ToDb:
 
         cards_and_dimensions_db = pickledb.load(config.CARDS_AND_DIMENSIONS_PICKLE_DB, False)
 
-
-        drawn_cards.update({dimension_name: dimension_value})
+        drawn_cards.update({"dimension_name": dimension_name.replace("_", " ")})
+        drawn_cards.update({"dimension_value": dimension_value})
         drawn_cards.update({"rule_name": rule_name})
         drawn_cards.update({"rule_bool": rule_bool})
         cards_and_dimensions_db.set(str(i), drawn_cards)

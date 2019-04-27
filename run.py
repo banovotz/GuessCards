@@ -107,21 +107,22 @@ def main():
 
             t = threading.Thread(target=display_html)
             t.start()
-            webview.create_window('Preview hands of drawn cards ')
+            webview.create_window('Play', width=850, height=600)
 
 
     except:
         R = Run()
         print("Generating list of " + str(results.list_len_value) + " hands with " + str(config.CARDS_TO_DRAW) + " cards")
         R.generate_list(results.dimension_value, results.list_len_value, [results.rule_name_value, results.rule_param_value])
-
+        RC = RunCsv()
+        RC.generate_csv()
 
 
 #
 #P.predict_bool()
 
-#RC = RunCsv()
-#RC.generate_csv()
+RC = RunCsv()
+RC.generate_csv()
 
 #from gui import gui
 main()

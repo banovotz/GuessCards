@@ -25,13 +25,14 @@ class ToHtml:
                     try:
                         w2n.word_to_num(col[0])
 
-                        t.td("<img width='110' src='https://deckofcardsapi.com/static/img/"
+                        t.td("<img width='100' src='https://deckofcardsapi.com/static/img/"
                              + col[1]
                              + ".png'></img>",
                              escape=False,
-                             id=col[0])
+                             id=col[0]+str(reader.line_num),
+                             klass=col[0])
                     except:
-                        t.td(col[1], id=col[0])
+                        t.td(col[1], klass=col[0], id=col[0]+str(reader.line_num))
 
         html_app_before="""
         <html>
@@ -40,15 +41,16 @@ class ToHtml:
         <body onload="init()">
         <style>
         #carddata {display: none;}
-        #rule_name {color: transparent;}
-        #sum_of_all_numbers {color: transparent;}
-        #rule_bool {text-transform: uppercase;
+        .dimension_name {color: transparent;}
+        .dimension_value {color: transparent;}
+        .rule_name {color: transparent;}
+        .rule_bool {text-transform: uppercase;
                     color: ffffff;}
         body {background-color: 496D89;}
-        #play  {background-color: #123652; /* Green */
+        #play, #reveal {background-color: #123652; /* Green */
                 border: none;
                 color: white;
-                padding: 15px 32px;
+                padding: 45px 85px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
@@ -68,6 +70,8 @@ class ToHtml:
         html_app_after="""
         <table id="button_play"> 
         <button type="Button" id="play" name="Play" onclick="toggleTable()">Draw</button>
+        <button type="Button" id="reveal" name="Reveal" onclick="revealRule()">Reveal rule</button>
+        
         </table>
         <script>
         function toggleTable() {
@@ -75,8 +79,20 @@ class ToHtml:
             var rows_count= document.getElementById("carddata").rows.length;
             i = Math.floor(Math.random() * rows_count-2) + 2;
             j=i.toString();
-            document.getElementById('button_play').innerHTML = document.getElementById(j).innerHTML + " <button type=\\"Button\\" id=\\"play\\" name=\\"Play\\" onclick=\\"toggleTable()\\">Draw</button>";
+            document.getElementById('button_play').innerHTML = document.getElementById(j).innerHTML; //+ " <button type=\\"Button\\" id=\\"play\\" name=\\"Play\\" onclick=\\"toggleTable()\\">Draw</button>";
 
+        }
+        
+        </script>
+        <script>
+        function revealRule() {
+            var item_count = document.getElementsByClassName('rule_name').length;
+
+            document.getElementsByClassName('dimension_name')[item_count-1].style.color = "ffffff";
+             document.getElementsByClassName('dimension_value')[item_count-1].style.color = "ffffff";
+            document.getElementsByClassName('rule_name')[item_count-1].style.color = "ffffff";
+            
+            
         }
         
         </script>
