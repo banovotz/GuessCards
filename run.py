@@ -20,7 +20,7 @@ IP=is_prime.IsPrime()
 TH=to_html.ToHtml()
 
 def switch_dimensions(drawn_cards):
-    dimensions_switch = {"sum_of_all_cards_with_numbers": SAN.sumOfAllNumbers(drawn_cards)}
+    dimensions_switch = {config.DIMENSION_NAMES[0]: SAN.sumOfAllNumbers(drawn_cards)}
     return dimensions_switch
 
 
@@ -86,7 +86,7 @@ def main():
     subparser = parser.add_subparsers()
     dimensions_parser=subparser.add_parser('dimensions')
 
-    dimensions_parser.add_argument('--dimension', dest='dimension_value', help='dimension to run', required=True)
+    dimensions_parser.add_argument('--dimension', widget='Dropdown', dest='dimension_value', choices=config.DIMENSION_NAMES, help='dimension to run', required=True)
     dimensions_parser.add_argument('--list_len', dest='list_len_value', help='list length', required=True)
     dimensions_parser.add_argument('--rule_name', dest='rule_name_value', help='rule name', required=True)
     dimensions_parser.add_argument('--param', dest='rule_param_value', help='rule param', required=True)
