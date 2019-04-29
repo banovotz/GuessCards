@@ -47,17 +47,25 @@ class Run:
                     rule_bool="false"
 
             elif rule[0] == "prime":
-                print ("usli u prime")
-                if rule[1] == True:
+                if rule[1] == "True":
                     rule_name="is prime"
 
                     if IP.is_prime(int(dimension_value)) == True:
-                        print("prime je " + dimension_value)
                         rule_bool="true"
                     else:
-                        print("nije prime " + dimension_value)
                         rule_bool = "false"
+                elif rule[1] == "False":
+                    rule_name = "is not prime"
+                    if IP.is_prime(int(dimension_value)) == False:
+                        rule_bool="true"
+                    else:
+                        rule_bool = "false"
+                else:
+                    rule_name = "rule not supported"
+                    rule_bool = "rule_not_suppported"
+
             else:
+                rule_name = "rule not supported"
                 rule_bool = "rule_not_suppported"
 
             TD.to_db(dimension_name, dimension_value, drawn_cards, rule_bool, rule_name, i)
