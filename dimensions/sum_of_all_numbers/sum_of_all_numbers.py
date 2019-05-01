@@ -1,10 +1,10 @@
 import re
-import os
+from config import config
 
 class SumOfAllNumbers:
 
     def sumOfAllNumbers(self, cards):
-        dimension_name=os.path.basename(__file__).split(".")[0]
+        dimension_name=config.DIMENSION_NAMES[0]
         cards_list=[]
         cards_numbers = []
         for key,value in cards.items():

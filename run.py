@@ -116,6 +116,8 @@ def main():
             t = threading.Thread(target=display_html)
             t.start()
             webview.create_window('Play', width=850, height=600)
+        else:
+            P.predict_bool()
 
 
     except:

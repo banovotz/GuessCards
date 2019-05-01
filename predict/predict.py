@@ -13,7 +13,7 @@ class Predict():
 
         for i in cards_and_dimensions_db.getall():
             #print cards_and_dimensions_db.dgetall(i)
-            x.append([i, cards_and_dimensions_db.dgetall(i)["sum_of_all_numbers"]])
+            x.append([i, cards_and_dimensions_db.dgetall(i)["dimension_value"]])
             if cards_and_dimensions_db.dgetall((i))["rule_bool"]=="true":
                 y.append(1)
             else:
